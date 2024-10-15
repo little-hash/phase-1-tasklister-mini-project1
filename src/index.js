@@ -1,64 +1,63 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // your code here
-require("./helpers.js");
- describe("", () => {
-describe("", () => {
-  it("Test Passing", () => {
-    return true;
-    });
-  });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  
-  const Form = document.getElementById("create-task-form");
-  
-  const TaskList = document.getElementById("Tasks");
-  
-  Form.addEventListener("Submit", (event) => {
+  const form = document.getElementById("create-task-form");
+  const taskList = document.getElementById("tasks");
+
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const TaskDescription = document.getElementById("New-Task-Description").value;
-    const TaskPriority = document.getElementById("Task-priority").value;
 
-    const NEWTaskItem = document.createElement("li");
-    NEWTaskItem.textContent = TaskDescription;
+    const taskDescription = document.getElementById("new-task-description").value;
+    const taskPriority = document.getElementById("task-priority").value;
 
-    if (TaskPriority === "High") {
-      NEWTaskItem.style.color = "Violet";
-    } else if (TaskPriority === "Medium") {
-      NEWTaskItem.style.color = "Yellow";
+    const newTaskItem = document.createElement("li");
+    newTaskItem.textContent = taskDescription;
+
+  
+    if (taskPriority === "HIGH") {
+      newTaskItem.style.color = "violet";
+    } else if (taskPriority === "MEDIUM") {
+      newTaskItem.style.color = "yellow";
     } else {
-      NEWTaskItem.style.color = "Green";
+      newTaskItem.style.color = "green";
     }
- const deleteButton = document.createElement("button");
+
+    
+    const deleteButton = document.createElement("button");
     deleteButton.textContent = "DELETE";
     deleteButton.addEventListener("click", () => {
-      TaskList.removeChild(NEWTaskItem);
+      taskList.removeChild(newTaskItem);
     });
-const editButton = document.createElement("button");
+
+  
+    const editButton = document.createElement("button");
     editButton.textContent = "Edit";
     editButton.addEventListener("click", () => {
-      const newDescription = prompt("Edit your task:", TaskDescription);
+      const newDescription = prompt("Edit your task:", taskDescription);
       if (newDescription) {
-        NEWTaskItem.firstChild.textContent = newDescription;
+        newTaskItem.firstChild.nodeValue = newDescription;
       }
     });
-    
-NEWTaskItem.appendChild(editButton);
-    NEWTaskItem.appendChild(deleteButton);
 
-    TaskList.appendChild(NEWTaskItem);
-   
-     Form.reset();
+    
+    newTaskItem.appendChild(editButton);
+    newTaskItem.appendChild(deleteButton);
+
+    
+    taskList.appendChild(newTaskItem);
+
+
+    form.reset();
   });
- document.getElementById("sort-tasks").addEventListener("click", () => {
-    const TasksArray = Array.from(TaskList.children);
-    TasksArray.sort((a, b) => {
-      const priorityA = a.style.color === "red" ? 3 : a.style.color === "yellow" ? 2 : 1;
-      const priorityB = b.style.color === "red" ? 3 : b.style.color === "yellow" ? 2 : 1;
-      return priorityA - priorityB;
+
+  document.getElementById("sort-tasks").addEventListener("click", () => {
+    const tasksArray = Array.from(taskList.children);
+
+    tasksArray.sort((a, b) => {
+      const priorityA = a.style.color === "violet" ? 3 : a.style.color === "yellow" ? 2 : 1;
+      const priorityB = b.style.color === "violet" ? 3 : b.style.color === "yellow" ? 2 : 1;
+      return priorityB - priorityA; 
     });
-    TaskList.innerHTML = "";
-    TasksArray.forEach(task => TaskList.appendChild(task));
+
+    taskList.innerHTML = "";
+    tasksArray.forEach((task) => taskList.appendChild(task));
   });
-});
 });

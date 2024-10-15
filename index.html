@@ -10,26 +10,26 @@
     <h1>Task Lister Lite™️</h1>
 
     <form id="create-task-form" action="" method="POST">
-      <label for="New-Task-Description">Task List description:</label>
-      <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
-      
-    <label for="task-priority"></label>
-    <select name="task-priority" id="task-priority">
-    <option value="SMALL">Small</option>
-    <option value="MEDIAM">Medium</option>
-    <option value="HIGH">High</option>
-    </select>
-    
-    <label for="task-user">user:</label>
-    <input type="TEXT" id="Task-User" name="Task-User" placeholder="USER">
+      <label for="new-task-description">Task List description:</label>
+      <input type="text" id="new-task-description" name="new-task-description" placeholder="Description">
 
-    <label for="task-duration">Duration:hours</label>
-    <input type="Number" id="Task-duration" name="Task-duration" placeholder="Duration">
+      <label for="task-priority">Priority:</label>
+      <select name="task-priority" id="task-priority">
+        <option value="SMALL">Small</option>
+        <option value="MEDIUM">Medium</option>
+        <option value="HIGH">High</option>
+      </select>
 
-    <label for="Expire-date">Expire-date</label>
-    <input type="Date" id="Task-due-date" name="Task-due-date">
+      <label for="task-user">User:</label>
+      <input type="text" id="task-user" name="task-user" placeholder="User">
 
-     <input type="SUBMIT" value="Creat New Task">
+      <label for="task-duration">Duration (hours):</label>
+      <input type="number" id="task-duration" name="task-duration" placeholder="Duration">
+
+      <label for="task-due-date">Expire Date:</label>
+      <input type="date" id="task-due-date" name="task-due-date">
+
+      <input type="submit" value="Create New Task">
     </form>
 
     <div id="list">
@@ -40,6 +40,6 @@
 
     <script src="./src/index.js"></script>
   </div>
-
 </body>
 </html>
+
